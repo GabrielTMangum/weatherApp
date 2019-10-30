@@ -1,50 +1,17 @@
-
 $(document).ready(function () {
-    var classes = " class = 'bg-white rounded p-3 justify-content-start mb-2'"
-    var cityInput;
-    var searchesArray = [{city: "Charlotte"}];
+    var cityInput = $("#cityInput").val()
+    var queryUrl = "api.openweathermap.org/data/2.5/weather?appid=09dd0bebd4d550456ba64ad6cd823b00&q=" + cityInput
 
-    getSearches();
+     $("#submitBtn").on("click", function getWeather () {
 
-    $("#submitBtn").on("click", function () {
-        cityInput = $("#cityInput").val();
+        $.ajax({
+            url: queryUrl,
+            method: 'GET'
+        }).then (function (response) {
 
-        if (cityInput === "") {
-            // console.log("hi")
-            return;
-        } else {
-            
-            storeSearches(cityInput)
-            getSearches();
-        }
+            $("#weatherBoxes").append("<div class= 'card'><div class = 'card-body'><h1>" + cityInput + "</h1></div></div><br>")
+
+        })
     })
-    
-    function storeSearches() {
-        
-        for(var j = 0; j < searchesArray.length + 1; j++) {
-            console.log(searchesArray[j].city)
-            if (searchesArray[j].city === cityInput) {
-                return;
-            } else {
-                searchesArray.push({ city: cityInput })
-                localStorage.setItem("searchHistory", JSON.stringify(searchesArray));
-            }
-        }
-    }
-
-
-    function getSearches() {
-        var searchArray = JSON.parse(localStorage.getItem("searchHistory"));
-        if (searchArray !== null) {
-            console.log(searchArray)
-
-            for (var i = 0; i < searchArray.length; i++) {
-                $("#cityList").append("<div" + classes + ">" + "<a>" + searchArray[i].city + "</a>" + "</div>")
-            }
-
-        } else {
-            return;
-        }
-
-    }
 })
+    
