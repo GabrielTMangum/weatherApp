@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var date = moment().format('MMMM Do, YYYY')
-    
+
     $("#submitBtn").on("click", function () {
         var cityInput = $("#cityInput").val()
         console.log(cityInput)
@@ -9,7 +9,7 @@ $(document).ready(function () {
         $.ajax({
             url: queryUrl,
             method: 'GET'
-        }).then (function (response) {
+        }).then(function (response) {
 
             console.log(response)
 
@@ -18,4 +18,3 @@ $(document).ready(function () {
         })
     })
 })
-    
