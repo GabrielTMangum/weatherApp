@@ -6,3 +6,11 @@
 *This project was an attempt at making an app that will allow the user to look up the weather in an city in the world.  You can search for as many cities at you would like and it will add the panel to the top of the list.*
 
 *Please enjoy playing around with the app and feel free to try testing its capabilities.*
+
+*The page upon loading the URL*
+
+![Blank Page](./assets/images/blankPage.PNG)
+
+*The page populated with city weather information*
+
+![Filled Page](./assets/images/notBlank.PNG)
